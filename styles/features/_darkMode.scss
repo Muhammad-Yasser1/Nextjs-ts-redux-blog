@@ -1,0 +1,15 @@
+@media (prefers-color-scheme: dark), (prefers-dark-interface) {
+	body {
+		background-color: $dark-bg;
+		color: $light-text;
+	}
+	nav.navbar button.navbar-brand {
+		color: $light-text;
+	}
+	.modal .modal-content {
+		background-color: $dark-bg;
+	}
+	footer .MainFooter__content {
+		border-top-color: transparentize($light-bg, 0.9);
+	}
+}

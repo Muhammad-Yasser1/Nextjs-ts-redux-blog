@@ -1,8 +1,35 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+import store from 'store';
 
-export default MyApp
+import '@/styles/globals.scss';
+import MainLayout from '@/layouts/main-layout/MainLayout';
+import Initializer from '@/components/initializer/Initializer';
+
+const MyApp = ({
+	Component,
+	pageProps,
+}: AppProps & { Component: { noLayout: boolean } }) => {
+	console.log(Component.noLayout);
+
+	if (Component.noLayout) {
+		return (
+			<Provider store={store}>
+				<Initializer />
+				<Component {...pageProps} />
+			</Provider>
+		);
+	}
+
+	return (
+		<Provider store={store}>
+			<Initializer />
+			<MainLayout>
+				<Component {...pageProps} />
+			</MainLayout>
+		</Provider>
+	);
+};
+
+export default MyApp;

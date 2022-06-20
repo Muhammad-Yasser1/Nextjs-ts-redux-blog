@@ -1,0 +1,23 @@
+.FloatingButton {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: $light-bg;
+	color: $dark-text;
+	position: fixed;
+	right: 5%;
+	bottom: 5%;
+	z-index: 10;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 40px;
+	text-decoration: none;
+	transition: all 0.2s;
+	box-shadow: 0 2px 5px #777;
+	&:hover {
+		text-decoration: none;
+		background: $light-blue;
+		color: white;
+	}
+}

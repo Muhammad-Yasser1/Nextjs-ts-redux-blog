@@ -1,0 +1,11 @@
+.Input {
+	.form-control {
+		&--invalid {
+			border: 1px solid red;
+			box-shadow: 0 0 0.2rem red;
+			& + div small {
+				color: red;
+			}
+		}
+	}
+}

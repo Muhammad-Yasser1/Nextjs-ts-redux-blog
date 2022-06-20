@@ -1,0 +1,21 @@
+.ArticlesForm {
+    padding: 3rem;
+    &__title {
+        margin-bottom: 1rem;
+    }
+    button:not(:first-of-type) {
+        margin-left: 10px;
+        color: #fff;
+        &:hover {
+            color: #fff;
+        }
+    }
+    h1 {
+        @media screen and (max-width: 600px) {
+            font-size: 2rem !important;
+        }
+        @media screen and (max-width: 420px) {
+            font-size: 1.3rem !important;
+        }
+    }
+}

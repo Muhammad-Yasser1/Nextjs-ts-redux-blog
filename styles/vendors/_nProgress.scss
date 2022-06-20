@@ -1,0 +1,17 @@
+@import '@/node_modules/nprogress/nprogress.css';
+
+// progress bar
+#nprogress {
+	.bar {
+		background: $progress-bar-color;
+		height: 4px;
+	}
+	.peg {
+		box-shadow: 0 0 10px $progress-bar-color, 0 0 5px $progress-bar-color;
+	}
+
+	.spinner-icon {
+		border-top-color: $progress-bar-color;
+		border-left-color: $progress-bar-color;
+	}
+}

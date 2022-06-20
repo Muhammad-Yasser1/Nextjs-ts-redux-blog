@@ -1,0 +1,9 @@
+.SortArticles {
+    margin-left: auto;
+    .dropdown-toggle {
+        border-radius: 20px;
+        &::after {
+            vertical-align: 0.15em;
+        }
+    }
+}
