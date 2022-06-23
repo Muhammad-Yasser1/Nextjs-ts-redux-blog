@@ -9,6 +9,7 @@ function MainFooter() {
 					src={'/images/heart.png'}
 					className='img-fluid'
 					alt='heart'
+					layout='raw'
 					width={50}
 					height={50}
 				/>

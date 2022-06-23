@@ -1,3 +1,7 @@
+body {
+	background: #fcfdff;
+	color: #212529;
+}
 @media (prefers-color-scheme: dark), (prefers-dark-interface) {
 	body {
 		background-color: $dark-bg;

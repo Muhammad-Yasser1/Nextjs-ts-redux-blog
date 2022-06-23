@@ -7,6 +7,7 @@ import { signInUser, signUpUser } from '@s/features/user/userActions';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import styles from '@/styles/pages/AuthUser.module.scss';
 
 type FormMode = 'signIn' | 'signUp';
 
@@ -20,7 +21,6 @@ const AuthUser: NextPage & { noLayout?: boolean } = () => {
 		initFormErrorsFromState({ email, password, password2 })
 	);
 	const dispatch = useAppDispatch();
-	const isAuth = useAppSelector((state) => state.userReducer.isAuth);
 	const router = useRouter();
 	useEffect(() => {
 		if (formMode === 'signIn') {
@@ -119,6 +119,7 @@ const AuthUser: NextPage & { noLayout?: boolean } = () => {
 		} else {
 			dispatch(signUpUser(userCred));
 		}
+		router.push('/articles');
 	};
 
 	const toggleFormMode = () => {
@@ -126,7 +127,7 @@ const AuthUser: NextPage & { noLayout?: boolean } = () => {
 	};
 
 	return (
-		<main className='AuthUser'>
+		<main className={`${styles.AuthUser}`}>
 			<div className='container'>
 				<h1>Login or Register to Continue...</h1>
 				<form onSubmit={handleSubmit}>
@@ -157,7 +158,7 @@ const AuthUser: NextPage & { noLayout?: boolean } = () => {
 							placeholder='Write Your password again'
 						/>
 					)}
-					<div className='AuthUser__buttons'>
+					<div className={`${styles.AuthUser__buttons}`}>
 						<input
 							type='submit'
 							value={

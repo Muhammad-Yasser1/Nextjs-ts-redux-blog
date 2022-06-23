@@ -1,7 +1,8 @@
-import type { NextPage } from 'next';
+import { NextPage } from 'next';
+import ArticlesList from '@c/articles-list/ArticlesList';
 
 const Home: NextPage = () => {
-	return <>Home</>;
+	return <ArticlesList />;
 };
 
 export default Home;

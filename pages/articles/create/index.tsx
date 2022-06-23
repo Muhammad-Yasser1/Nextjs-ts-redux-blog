@@ -1,7 +1,8 @@
-import type { NextPage } from 'next';
+import { NextPage } from 'next';
+import ArticlesForm from '@c/articles-form/ArticlesForm';
 
 const CreateArticle: NextPage = () => {
-	return <>CreateArticle</>;
+	return <ArticlesForm isNewArticle />;
 };
 
 export default CreateArticle;

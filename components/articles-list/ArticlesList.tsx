@@ -3,8 +3,13 @@ import Link from 'next/link';
 import { useAppSelector } from '@/store';
 import SearchArticles from '@c/search-articles/SearchArticles';
 import SortArticles from '@c/sort-articles/SortArticles';
+import { NextComponentType, NextPageContext } from 'next';
 
-function ArticlesList() {
+interface Props {}
+
+const ArticlesList: NextComponentType<NextPageContext, {}, Props> = (
+	props: Props
+) => {
 	const articles = useAppSelector((state) => state.articlesReducer.articles);
 	const searchedArticles = useAppSelector(
 		(state) => state.articlesReducer.searchedArticles
@@ -31,25 +36,29 @@ function ArticlesList() {
 										: `/articles/${article.id}/edit`,
 							}}
 						>
-							<Image
-								width={200}
-								height={650}
-								className='card-img-top'
-								src={`/images/${article.image}`}
-								alt='Article Picture'
-							/>
-							<div className='title'>{article.title}</div>
-							<div className='overlay' />
-							<div className='author'>
-								{article.updated_at || article.created_at}{' '}
-								{article.author && `by ${article.author}`}
-							</div>
+							<a>
+								<Image
+									width={700}
+									height={1050}
+									layout={'raw'}
+									priority={article.image === 'asset 1.jpeg'}
+									className='img-fluid card-img-top'
+									src={`/images/${article.image}`}
+									alt='Article Picture'
+								/>
+								<div className='title'>{article.title}</div>
+								<div className='overlay' />
+								<div className='author'>
+									{article.updated_at || article.created_at}{' '}
+									{article.author && `by ${article.author}`}
+								</div>
+							</a>
 						</Link>
 					</div>
 				);
 			})}
 		</div>
 	);
-}
+};
 
 export default ArticlesList;

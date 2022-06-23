@@ -7,11 +7,10 @@ interface Props {
 	articles: IArticleToStore[];
 }
 
-function SortArticles({ articles }: Props) {
+const SortArticles = ({ articles }: Props) => {
 	const [showDropdown, setShowDropdown] = useState(false);
-	const [currentSortType, setCurrentSortType] = useState<sortTypes>(
-		(localStorage.getItem('currentSortType') as sortTypes) || 'oldest'
-	);
+	const [currentSortType, setCurrentSortType] = useState<sortTypes>('oldest');
+
 	const dispatch = useAppDispatch();
 
 	const toggleDropdown = () => {
@@ -32,6 +31,12 @@ function SortArticles({ articles }: Props) {
 	useEffect(() => {
 		localStorage.setItem('currentSortType', currentSortType);
 	}, [currentSortType]);
+
+	useEffect(() => {
+		setCurrentSortType(
+			localStorage.getItem('currentSortType') as sortTypes
+		);
+	}, []);
 
 	return (
 		<div className='SortArticles'>
@@ -90,6 +95,6 @@ function SortArticles({ articles }: Props) {
 			</div>
 		</div>
 	);
-}
+};
 
 export default SortArticles;

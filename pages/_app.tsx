@@ -11,8 +11,6 @@ const MyApp = ({
 	Component,
 	pageProps,
 }: AppProps & { Component: { noLayout: boolean } }) => {
-	console.log(Component.noLayout);
-
 	if (Component.noLayout) {
 		return (
 			<Provider store={store}>

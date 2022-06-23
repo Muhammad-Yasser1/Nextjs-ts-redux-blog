@@ -1,14 +1,16 @@
+@import '../utils/mixins';
+
 .AuthUser {
 	min-height: 100vh;
 	min-width: 370px;
 	margin: auto;
+	@include center-flex;
 	h1 {
 		margin: auto;
 		text-align: center;
 		max-width: 650px;
 		margin-bottom: 20px;
 	}
-	@include center-flex;
 	form {
 		margin: auto;
 		max-width: 500px;

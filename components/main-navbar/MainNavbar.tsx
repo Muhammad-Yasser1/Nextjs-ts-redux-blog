@@ -23,11 +23,12 @@ function MainNavbar(props: Props) {
 		dispatch(userActions.signOut());
 		dispatch(notify('You signed out successfully!', 'success'));
 		localStorageApi.removeToken();
+		router.push('/auth-user');
 	};
 
 	const handleNavigate = () => {
-		if (window.location.pathname !== '/home') {
-			router.push('/home');
+		if (window.location.pathname !== '/articles') {
+			router.push('/articles');
 		}
 	};
 

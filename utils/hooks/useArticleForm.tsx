@@ -157,7 +157,7 @@ const useArticleForm = (configs: {
 				);
 			}
 			setTimeout(() => {
-				router.push('/home');
+				router.push('/articles');
 			}, 100);
 		} else {
 			dispatch(notify('Please fix the fields errors'));
@@ -168,12 +168,12 @@ const useArticleForm = (configs: {
 		validateForm();
 	};
 	const handleCancel = () => {
-		router.push('/home');
+		router.push('/articles');
 	};
 	const handleDelete = () => {
 		dispatch(deleteArticle(currentArticle));
 		setTimeout(() => {
-			router.push('/home');
+			router.push('/articles');
 		}, 100);
 	};
 	return [
