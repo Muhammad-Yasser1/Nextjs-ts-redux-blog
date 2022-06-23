@@ -1,15 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useAppSelector } from '@/store';
+import { useAppSelector } from '@s/index';
 import SearchArticles from '@c/search-articles/SearchArticles';
 import SortArticles from '@c/sort-articles/SortArticles';
 import { NextComponentType, NextPageContext } from 'next';
 
-interface Props {}
-
-const ArticlesList: NextComponentType<NextPageContext, {}, Props> = (
-	props: Props
-) => {
+const ArticlesList: NextComponentType = () => {
 	const articles = useAppSelector((state) => state.articlesReducer.articles);
 	const searchedArticles = useAppSelector(
 		(state) => state.articlesReducer.searchedArticles

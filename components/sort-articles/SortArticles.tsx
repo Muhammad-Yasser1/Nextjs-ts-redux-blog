@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react';
 import { IArticleToStore } from '@u/interfaces/Article.interface';
 import { useAppDispatch } from '@s/index';
 import { articleActions, sortTypes } from '@s/features/articles/articlesSlice';
+import { NextComponentType, NextPageContext } from 'next';
 
 interface Props {
 	articles: IArticleToStore[];
 }
 
-const SortArticles = ({ articles }: Props) => {
+const SortArticles: NextComponentType<NextPageContext, {}, Props> = ({
+	articles,
+}: Props) => {
 	const [showDropdown, setShowDropdown] = useState(false);
 	const [currentSortType, setCurrentSortType] = useState<sortTypes>('oldest');
 

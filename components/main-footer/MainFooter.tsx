@@ -1,6 +1,7 @@
+import { NextComponentType } from 'next';
 import Image from 'next/image';
 
-function MainFooter() {
+const MainFooter: NextComponentType = () => {
 	return (
 		<footer className='MainFooter text-center'>
 			<div className='MainFooter__content'>
@@ -19,6 +20,6 @@ function MainFooter() {
 			</div>
 		</footer>
 	);
-}
+};
 
 export default MainFooter;

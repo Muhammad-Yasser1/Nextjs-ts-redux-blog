@@ -1,10 +1,12 @@
 import useArticleForm from '@u/hooks/useArticleForm';
 import Input from '@c/Input/Input';
-
+import { NextComponentType, NextPageContext } from 'next';
 interface Props {
 	isNewArticle: boolean;
 }
-function ArticlesForm({ isNewArticle }: Props) {
+const ArticlesForm: NextComponentType<NextPageContext, {}, Props> = ({
+	isNewArticle,
+}: Props) => {
 	const [
 		formState,
 		handleChange,
@@ -88,6 +90,6 @@ function ArticlesForm({ isNewArticle }: Props) {
 			</form>
 		</div>
 	);
-}
+};
 
 export default ArticlesForm;

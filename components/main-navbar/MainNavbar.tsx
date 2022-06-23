@@ -3,13 +3,15 @@ import { useAppDispatch } from '@s/index';
 import { mode, setMode, userActions } from '@s/features/user/userSlice';
 import localStorageApi from '@s/features/user/localStorageApi';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { NextComponentType, NextPageContext } from 'next';
 
 interface Props {
 	mode: mode;
 }
 
-function MainNavbar(props: Props) {
+const MainNavbar: NextComponentType<NextPageContext, {}, Props> = (
+	props: Props
+) => {
 	const dispatch = useAppDispatch();
 	const router = useRouter();
 
@@ -81,6 +83,6 @@ function MainNavbar(props: Props) {
 			</nav>
 		</header>
 	);
-}
+};
 
 export default MainNavbar;

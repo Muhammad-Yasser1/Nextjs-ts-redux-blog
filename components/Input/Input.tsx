@@ -22,7 +22,7 @@ interface Props {
 	errors: { id: string; message: string }[];
 }
 
-function Input({
+const Input = ({
 	type = 'input',
 	inputType = 'text',
 	rows = 10,
@@ -36,7 +36,7 @@ function Input({
 	placeholder = '',
 	defaultValue = '',
 	customClassName = '',
-}: Props) {
+}: Props) => {
 	const formattedLabel = useMemo(() => {
 		if (!label) {
 			const firstLetter = name.charAt(0).toUpperCase();
@@ -89,6 +89,6 @@ function Input({
 			</div>
 		</div>
 	);
-}
+};
 
 export default Input;

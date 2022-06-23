@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { mode } from '@s/features/user/userSlice';
+import { NextComponentType, NextPageContext } from 'next';
 
 interface Props {
 	mode: mode;
 }
-function Modal(props: Props) {
+const Modal: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
 	const [showModal, setShowModal] = useState(false);
 	const [highModal, setHighModal] = useState(false);
 	useEffect(() => {
@@ -73,6 +74,6 @@ function Modal(props: Props) {
 			</div>
 		</div>
 	);
-}
+};
 
 export default Modal;

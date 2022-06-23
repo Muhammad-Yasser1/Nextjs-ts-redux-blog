@@ -9,10 +9,7 @@ import NotificationsSystem, {
 import { useAppDispatch, useAppSelector } from '@s/index';
 import { fetchAllArticles } from '@s/features/articles/articlesActions';
 
-interface Props {}
-const Initializer: NextComponentType<NextPageContext, {}, Props> = (
-	props: Props
-) => {
+const Initializer: NextComponentType = () => {
 	const dispatch = useAppDispatch();
 	const notifications = useAppSelector((state) => state.notifications);
 	const articlesLoading = useAppSelector(

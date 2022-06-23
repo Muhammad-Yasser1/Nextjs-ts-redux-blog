@@ -3,8 +3,14 @@ import MainFooter from '@c/main-footer/MainFooter';
 import MainNavbar from '@c/main-navbar/MainNavbar';
 import Modal from '@/components/modal/Modal';
 import { useAppSelector } from '@/store';
+import { NextComponentType, NextPageContext } from 'next';
+import { PropsWithChildren } from 'react';
 
-const MainLayout = (props: any) => {
+interface Props extends PropsWithChildren {}
+
+const MainLayout: NextComponentType<NextPageContext, {}, Props> = (
+	props: Props
+) => {
 	const mode = useAppSelector((state) => state.userReducer.mode);
 	return (
 		<>

@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@s/index';
 import { articleActions } from '@s/features/articles/articlesSlice';
+import { NextComponentType, NextPageContext } from 'next';
 
 let debounceTimeout: ReturnType<typeof setTimeout>;
 
@@ -8,7 +9,9 @@ interface Props {
 	debounceTime: number;
 }
 
-function SearchArticles({ debounceTime }: Props) {
+const SearchArticles: NextComponentType<NextPageContext, {}, Props> = ({
+	debounceTime,
+}: Props) => {
 	const [searchText, setSearchText] = useState('');
 	const articles = useAppSelector((state) => state.articlesReducer.articles);
 	const dispatch = useAppDispatch();
@@ -39,6 +42,6 @@ function SearchArticles({ debounceTime }: Props) {
 			/>
 		</div>
 	);
-}
+};
 
 export default SearchArticles;

@@ -4,14 +4,16 @@ import Head from 'next/head';
 
 const Home: NextPage = () => {
 	return (
-		<Head>
-			<title>Home</title>
-			<meta
-				name='description'
-				content='Keep yourself updated with technology by studying top-quality tuts and articles'
-			/>
+		<>
+			<Head>
+				<title>Home</title>
+				<meta
+					name='description'
+					content='Keep yourself updated with technology by studying top-quality tuts and articles'
+				/>
+			</Head>
 			<ArticlesList />
-		</Head>
+		</>
 	);
 };
 
