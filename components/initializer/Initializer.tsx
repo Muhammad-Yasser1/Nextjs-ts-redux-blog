@@ -8,6 +8,7 @@ import NotificationsSystem, {
 } from 'reapop';
 import { useAppDispatch, useAppSelector } from '@s/index';
 import { fetchAllArticles } from '@s/features/articles/articlesActions';
+import Head from 'next/head';
 
 const Initializer: NextComponentType = () => {
 	const dispatch = useAppDispatch();
@@ -19,7 +20,7 @@ const Initializer: NextComponentType = () => {
 	const loading = articlesLoading || userLoading;
 	const token = useAppSelector((state) => state.userReducer.token);
 
-	const [CompTemp, setCompTemp] = useState(<></>);
+	const [afterHydration, setAfterHydration] = useState(<></>);
 
 	useEffect(() => {
 		setUpNotifications({
@@ -42,7 +43,7 @@ const Initializer: NextComponentType = () => {
 	}, [loading]);
 
 	useEffect(() => {
-		setCompTemp(
+		setAfterHydration(
 			<NotificationsSystem
 				notifications={notifications}
 				dismissNotification={(id) => dispatch(dismissNotification(id))}
@@ -51,7 +52,14 @@ const Initializer: NextComponentType = () => {
 		);
 	}, [dispatch, notifications]);
 
-	return CompTemp;
+	return (
+		<>
+			<Head>
+				<link rel='shortcut icon' href='/images/blog.png' />
+			</Head>
+			{afterHydration}
+		</>
+	);
 };
 
 export default Initializer;

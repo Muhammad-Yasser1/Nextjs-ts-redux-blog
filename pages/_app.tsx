@@ -4,28 +4,23 @@ import { Provider } from 'react-redux';
 import store from '@s/index';
 
 import '@/styles/globals.scss';
+
 import MainLayout from '@/layouts/main-layout/MainLayout';
-import Initializer from '@/components/initializer/Initializer';
+import Initializer from '@c/initializer/Initializer';
 
-const MyApp = ({
-	Component,
-	pageProps,
-}: AppProps & { Component: { noLayout: boolean } }) => {
-	if (Component.noLayout) {
-		return (
-			<Provider store={store}>
-				<Initializer />
-				<Component {...pageProps} />
-			</Provider>
-		);
-	}
+type Props = AppProps & { Component: { noLayout: boolean } };
 
+const MyApp = ({ Component, pageProps }: Props) => {
 	return (
 		<Provider store={store}>
 			<Initializer />
-			<MainLayout>
+			{Component.noLayout ? (
 				<Component {...pageProps} />
-			</MainLayout>
+			) : (
+				<MainLayout>
+					<Component {...pageProps} />
+				</MainLayout>
+			)}
 		</Provider>
 	);
 };

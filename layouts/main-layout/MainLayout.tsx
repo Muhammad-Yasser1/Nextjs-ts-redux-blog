@@ -4,15 +4,25 @@ import MainNavbar from '@c/main-navbar/MainNavbar';
 import Modal from '@/components/modal/Modal';
 import { useAppSelector } from '@/store';
 import { NextComponentType, NextPageContext } from 'next';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 interface Props extends PropsWithChildren {}
 
 const MainLayout: NextComponentType<NextPageContext, {}, Props> = (
 	props: Props
 ) => {
+	const isAuth = useAppSelector((state) => state.userReducer.isAuth);
 	const mode = useAppSelector((state) => state.userReducer.mode);
-	return (
+	const router = useRouter();
+
+	useEffect(() => {
+		if (!isAuth) {
+			router.push('/auth-user');
+		}
+	}, [isAuth, router]);
+
+	return isAuth ? (
 		<>
 			<MainNavbar mode={mode} />
 
@@ -24,6 +34,8 @@ const MainLayout: NextComponentType<NextPageContext, {}, Props> = (
 
 			<MainFooter />
 		</>
+	) : (
+		<></>
 	);
 };
 

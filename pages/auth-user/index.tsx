@@ -116,11 +116,14 @@ const AuthUser: NextPage & { noLayout?: boolean } = () => {
 			password: password.value,
 		};
 		if (formMode === 'signIn') {
-			dispatch(signInUser(userCred));
+			dispatch(signInUser(userCred)).then((res) => {
+				router.push('/articles');
+			});
 		} else {
-			dispatch(signUpUser(userCred));
+			dispatch(signUpUser(userCred)).then((res) => {
+				router.push('/articles');
+			});
 		}
-		router.push('/articles');
 	};
 
 	const toggleFormMode = () => {
