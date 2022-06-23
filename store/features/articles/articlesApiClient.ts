@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from '../..';
+import store from '@s/index';
 
 const articlesApiClient = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_FIREBASE_DB_API_URL,

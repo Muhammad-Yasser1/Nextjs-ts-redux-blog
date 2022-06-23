@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Input from '../../components/Input/Input';
+import Input from '@c/Input/Input';
 import { initFormErrorsFromState } from '@u/helpers/initFormErrors';
 import { isValidEmail } from '@u/helpers/isValidEmail';
 import { IUserCred } from '@u/interfaces/UserCred.interface';
@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '@/store';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import styles from '@/styles/pages/AuthUser.module.scss';
+import Head from 'next/head';
 
 type FormMode = 'signIn' | 'signUp';
 
@@ -127,60 +128,71 @@ const AuthUser: NextPage & { noLayout?: boolean } = () => {
 	};
 
 	return (
-		<main className={`${styles.AuthUser}`}>
-			<div className='container'>
-				<h1>Login or Register to Continue...</h1>
-				<form onSubmit={handleSubmit}>
-					<Input
-						errors={errors.email}
-						name='email'
-						onChange={handleChange}
-						type='input'
-						inputType='email'
-						placeholder='Your email is...'
-					/>
-					<Input
-						errors={errors.password}
-						name='password'
-						onChange={handleChange}
-						type='input'
-						inputType='password'
-						placeholder='Your password is...'
-					/>
-					{formMode === 'signUp' && (
+		<>
+			<Head>
+				<title>Login/Register | Blog</title>
+				<meta
+					name='description'
+					content="Login to Mo blog, don't have an account? no problem you can get one for free"
+				/>
+			</Head>
+			<main className={`${styles.AuthUser}`}>
+				<div className='container'>
+					<h1>Login or Register to Continue...</h1>
+					<form onSubmit={handleSubmit}>
 						<Input
-							errors={errors.password2}
-							name='password2'
+							errors={errors.email}
+							name='email'
 							onChange={handleChange}
-							label='Verify your password: '
+							type='input'
+							inputType='email'
+							placeholder='Your email is...'
+						/>
+						<Input
+							errors={errors.password}
+							name='password'
+							onChange={handleChange}
 							type='input'
 							inputType='password'
-							placeholder='Write Your password again'
+							placeholder='Your password is...'
 						/>
-					)}
-					<div className={`${styles.AuthUser__buttons}`}>
-						<input
-							type='submit'
-							value={
-								formMode === 'signIn' ? 'Sign in' : 'Sign up'
-							}
-							className='btn btn-primary'
-							disabled={!isFormValid}
-						/>
-						<input
-							type='button'
-							value={
-								formMode === 'signIn'
-									? 'Sign up instead'
-									: 'Sign in instead'
-							}
-							className='btn btn-secondary ml-auto'
-							onClick={toggleFormMode}
-						/>
-					</div>
-				</form>
-			</div>
-		</main>
+						{formMode === 'signUp' && (
+							<Input
+								errors={errors.password2}
+								name='password2'
+								onChange={handleChange}
+								label='Verify your password: '
+								type='input'
+								inputType='password'
+								placeholder='Write Your password again'
+							/>
+						)}
+						<div className={`${styles.AuthUser__buttons}`}>
+							<input
+								type='submit'
+								value={
+									formMode === 'signIn'
+										? 'Sign in'
+										: 'Sign up'
+								}
+								className='btn btn-primary'
+								disabled={!isFormValid}
+							/>
+							<input
+								type='button'
+								value={
+									formMode === 'signIn'
+										? 'Sign up instead'
+										: 'Sign in instead'
+								}
+								className='btn btn-secondary ml-auto'
+								onClick={toggleFormMode}
+							/>
+						</div>
+					</form>
+				</div>
+			</main>
+		</>
 	);
 };
 
